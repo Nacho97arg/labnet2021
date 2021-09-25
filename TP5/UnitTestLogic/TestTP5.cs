@@ -16,65 +16,66 @@ namespace TP5.Logic.Test
         [TestMethod]
         public void TestGetACustomer()
         {
-            //NorthwindContext context = new NorthwindContext();
             LINQuerys logic = new LINQuerys(context);
-            Customers expectedCustomer = context.Customers.First();
 
             Customers customer = logic.GetACustomer();
 
-            Assert.AreEqual(expectedCustomer, customer);
+            Assert.IsInstanceOfType(customer, new Customers().GetType());
         }
         [TestMethod]
         public void TestGetOutOfStockProducts()
         {
-            //NorthwindContext context = new NorthwindContext();
             LINQuerys logic = new LINQuerys(context);
-            List<Products> expectedProductsOutofStock = context.Products.Where(p => p.UnitsInStock == 0).ToList();
 
             List<Products> productsOutOfStock = logic.GetOutOfStockProducts().ToList();
 
-            CollectionAssert.AreEqual(expectedProductsOutofStock, productsOutOfStock);
+            foreach (Products product in productsOutOfStock)
+            {
+                if (product.UnitsInStock != 0)
+                    throw new AssertFailedException();
+            }
         }
         [TestMethod]
         public void TestGetOnStockProductsStartingAt()
         {
-            //NorthwindContext context = new NorthwindContext();
             LINQuerys logic = new LINQuerys(context);
             const decimal MINIMUM_FILTER_PRICE = 3;
-            List<Products> expectedProductsOnStock = context.Products.Where(p => (p.UnitsInStock > 0) && (p.UnitPrice > MINIMUM_FILTER_PRICE)).ToList();
 
             List<Products> productsOnStock = logic.GetOnStockProductsStartingAt(MINIMUM_FILTER_PRICE).ToList();
 
-            CollectionAssert.AreEqual(expectedProductsOnStock, productsOnStock);
+            foreach (Products product in productsOnStock)
+            {
+                if ((product.UnitsInStock == 0) || (product.UnitPrice < MINIMUM_FILTER_PRICE))
+                    throw new AssertFailedException();
+            }
         }
         [TestMethod]
         public void TestGetCustomersOnRegion()
         {
-            //NorthwindContext context = new NorthwindContext();
             LINQuerys logic = new LINQuerys(context);
             const string REGION_TO_FILTER = "WA";
-            List<Customers> expectedCostomersOnRegion = context.Customers.Where(c => c.Region==REGION_TO_FILTER).ToList();
 
             List<Customers> customersOnRegion = logic.GetCostumersOnRegion(REGION_TO_FILTER).ToList();
 
-            CollectionAssert.AreEqual(expectedCostomersOnRegion, customersOnRegion);
-        }
+            foreach(Customers customer in customersOnRegion)
+            {
+                if (customer.Region != REGION_TO_FILTER)
+                    throw new AssertFailedException();
+            }        }
         [TestMethod]
         public void TestGetProduct()
         {
-            //NorthwindContext context = new NorthwindContext();
             LINQuerys logic = new LINQuerys(context);
             const int PRODUCTID_TO_GET = 76;
-            Products expectedProduct = context.Products.FirstOrDefault(p => p.ProductID == PRODUCTID_TO_GET);
 
             Products product = logic.GetProduct(PRODUCTID_TO_GET);
 
-            Assert.AreEqual(expectedProduct, product);
+            if (product.ProductID != PRODUCTID_TO_GET)
+                throw new AssertFailedException();            
         }
         [TestMethod]
         public void TestGetCustomersNames()
         {
-            //NorthwindContext context = new NorthwindContext();
             LINQuerys logic = new LINQuerys(context);
             bool flag = true;
             List<Customers> customers =(from customer in context.Customers

@@ -9,10 +9,10 @@ using TP5.Entities.JoinEntities;
 
 namespace TP5.Logic
 {
-    public class LINQuerys
+    public class Querys
     {
         private readonly NorthwindContext context;
-        public LINQuerys(NorthwindContext context)
+        public Querys(NorthwindContext context)
         {
             this.context = context;
         }
@@ -119,13 +119,13 @@ namespace TP5.Logic
             return firstElement;
         }
         /*13*/
-        public IQueryable<CustomerOrdersQuantity> GetOrdersQuantityByCustumer()
+        public IQueryable<CustomerOrdersQuantityJoin> GetOrdersQuantityByCustumer()
         {
             var ordersQuantityByCustomer = from customer in context.Customers
                                            join order in context.Orders
                                            on customer.CustomerID equals order.CustomerID
                                            group customer by customer into groupedCustomers
-                                           select new CustomerOrdersQuantity{ Customer = groupedCustomers.Key, OrdersQuantity = groupedCustomers.Count() };
+                                           select new CustomerOrdersQuantityJoin{ Customer = groupedCustomers.Key, OrdersQuantity = groupedCustomers.Count() };
             return ordersQuantityByCustomer;
         }
     }

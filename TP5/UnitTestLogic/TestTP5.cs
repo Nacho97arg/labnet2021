@@ -16,7 +16,7 @@ namespace TP5.Logic.Test
         [TestMethod]
         public void TestGetACustomer()
         {
-            LINQuerys logic = new LINQuerys(context);
+            Querys logic = new Querys(context);
 
             Customers customer = logic.GetACustomer();
 
@@ -25,7 +25,7 @@ namespace TP5.Logic.Test
         [TestMethod]
         public void TestGetOutOfStockProducts()
         {
-            LINQuerys logic = new LINQuerys(context);
+            Querys logic = new Querys(context);
 
             List<Products> productsOutOfStock = logic.GetOutOfStockProducts().ToList();
 
@@ -38,7 +38,7 @@ namespace TP5.Logic.Test
         [TestMethod]
         public void TestGetOnStockProductsStartingAt()
         {
-            LINQuerys logic = new LINQuerys(context);
+            Querys logic = new Querys(context);
             const decimal MINIMUM_FILTER_PRICE = 3;
 
             List<Products> productsOnStock = logic.GetOnStockProductsStartingAt(MINIMUM_FILTER_PRICE).ToList();
@@ -52,7 +52,7 @@ namespace TP5.Logic.Test
         [TestMethod]
         public void TestGetCustomersOnRegion()
         {
-            LINQuerys logic = new LINQuerys(context);
+            Querys logic = new Querys(context);
             const string REGION_TO_FILTER = "WA";
 
             List<Customers> customersOnRegion = logic.GetCostumersOnRegion(REGION_TO_FILTER).ToList();
@@ -65,7 +65,7 @@ namespace TP5.Logic.Test
         [TestMethod]
         public void TestGetProduct()
         {
-            LINQuerys logic = new LINQuerys(context);
+            Querys logic = new Querys(context);
             const int PRODUCTID_TO_GET = 76;
 
             Products product = logic.GetProduct(PRODUCTID_TO_GET);
@@ -76,7 +76,7 @@ namespace TP5.Logic.Test
         [TestMethod]
         public void TestGetCustomersNames()
         {
-            LINQuerys logic = new LINQuerys(context);
+            Querys logic = new Querys(context);
             bool flag = true;
             List<Customers> customers =(from customer in context.Customers
                                                     select customer).ToList();
@@ -100,7 +100,7 @@ namespace TP5.Logic.Test
         [TestMethod]
         public void TestGetOrdersByCustomersRegionAndDate()
         {
-            LINQuerys logic = new LINQuerys(context);
+            Querys logic = new Querys(context);
             const string REGION = "WA";
             DateTime DATE_TIME = DateTime.Parse("01/01/1997");
             bool flag = true;
@@ -120,7 +120,7 @@ namespace TP5.Logic.Test
         [TestMethod]
         public void TestGetFirstNCustomers()
         {
-            LINQuerys logic = new LINQuerys(context);
+            Querys logic = new Querys(context);
             const int N_CUSTOMERS = 3;
 
             List<Customers> firstNCustomers = logic.GetFirstNCustomers(N_CUSTOMERS).ToList();
@@ -130,7 +130,7 @@ namespace TP5.Logic.Test
         [TestMethod]
         public void TestGetProductsOrderedByStock()
         {
-            LINQuerys logic = new LINQuerys(context);
+            Querys logic = new Querys(context);
             List<Products> expectedProductsOrdered =    (from product in context.Products
                                                         orderby product.UnitsInStock descending
                                                         select product).ToList();
@@ -142,7 +142,7 @@ namespace TP5.Logic.Test
         [TestMethod]
         public void TestGetProductsAlfOrdered()
         {
-            LINQuerys logic = new LINQuerys(context);
+            Querys logic = new Querys(context);
             List<Products> expectedProductsOrdered = (from product in context.Products
                                                       orderby product.ProductName
                                                       select product).ToList();
@@ -154,7 +154,7 @@ namespace TP5.Logic.Test
         [TestMethod]
         public void TestAssociatedCategories()
         {
-            LINQuerys logic = new LINQuerys(context);
+            Querys logic = new Querys(context);
 
             List<Categories> associatedCategories = logic.GetAssociatedCategories().ToList();
 
@@ -163,7 +163,7 @@ namespace TP5.Logic.Test
         [TestMethod]
         public void TestGetFirstElement()
         {
-            LINQuerys logic = new LINQuerys(context);
+            Querys logic = new Querys(context);
             List<Products> listOfProducts = context.Products.Take(5).ToList();
             Products expectedFirstProduct = listOfProducts.FirstOrDefault();
 
@@ -174,9 +174,9 @@ namespace TP5.Logic.Test
         [TestMethod]
         public void TestGetOrdersQuantityByCostumer()
         {
-            LINQuerys logic = new LINQuerys(context);
+            Querys logic = new Querys(context);
 
-            List<CustomerOrdersQuantity> ordersQuantity = logic.GetOrdersQuantityByCustumer().ToList();
+            List<CustomerOrdersQuantityJoin> ordersQuantity = logic.GetOrdersQuantityByCustumer().ToList();
 
             CollectionAssert.AllItemsAreUnique(ordersQuantity);
         }

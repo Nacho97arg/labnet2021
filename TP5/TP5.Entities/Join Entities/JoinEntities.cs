@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TP5.Entities.JoinEntities
 {
@@ -28,7 +24,7 @@ namespace TP5.Entities.JoinEntities
         public DateTime? ShippedDate { get; set; }
     }
 
-    public class CustomerOrdersQuantity
+    public class CustomerOrdersQuantityJoin
     {
         public Customers Customer { get; set; }
         public int OrdersQuantity { get; set; }

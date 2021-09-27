@@ -1,0 +1,29 @@
+body
+{
+    background-color: #FAFAFA;
+    font-family: 'Roboto', sans-serif;
+}
+form{
+    position: absolute;
+    top: 25%;
+    left: 40%;
+    background-color: #FFFFFF;
+    border-radius: 5px;
+    border: 1px solid #DBDBDB;
+}
+fieldset{
+    border-radius: inherit;
+    border: inherit;
+    margin: 15px;
+}
+legend{
+    font-weight: bold;
+}
+div{
+    margin: 15px;    
+}
+.button
+{
+    font-size: 15px;
+    padding: 5px;
+}

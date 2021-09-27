@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        #txtEdad{
+            width: 50px;
+        }
+    </style>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <script src="scripts/jquery_3.6.0.js"></script>
+    
+    <title>Contacto</title>
+</head>
+<body>
+    <form action="#" method="post" style="width: 400px;">
+        <fieldset>
+            <legend>Informacion Personal:</legend>
+
+            <label for="txtNombre">Nombre:</label><br>
+            <input type="text" name="nombre" id="txtNombre" class='fields'><br>
+            <label for="txtApellido">Apellido:</label><br>
+            <input type="text" name="apellido" id="txtApellido" class='fields'><br>
+            <label for="txtEdad">Edad:</label><br>
+            <input type="number" min="0" max="110" name="edad" id="txtEdad" class='fields'>
+            <p></p>
+            <input type="radio" name="sexo" id="rbMasculino" value="masculino" checked>
+            <label for="rbMasculino">Masculino</label><br>
+            <input type="radio" name="sexo" id="rbFemenino" value="femenino">
+            <label for="rbFemenino">Femenino</label><br>
+            <input type="radio" name="sexo" id="rbOtro" value="otro">
+            <label for="rbOtro">Otro</label>
+        </fieldset>
+        <fieldset>
+            <legend>Informacion Adicional:</legend>
+
+            <label for="txtEmpresa">Empresa:</label><br>
+            <input type="text" name="empresa" id="txtEmpresa" class='fields'>
+        </fieldset>
+        <div id="divSubmit">
+            <input id="btnLimpiarCampos" type="button" value="Limpiar Campos" class="button">
+            <input id="btnSubmit" type="button" value="Enviar" class="button">
+        </div>
+    </form>
+</body>
+<script src="scripts/btn_events.js"></script>  
+</html>

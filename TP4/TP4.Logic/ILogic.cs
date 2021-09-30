@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TP4.Logic
 {
-    interface ILogic<T>
+    public interface ILogic<T>
     {
         List<T> GetAll();
         void AddOne(T objectToAdd);

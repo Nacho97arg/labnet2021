@@ -17,8 +17,6 @@ namespace TP4.Logic
                 this.context = value;
             }
         }
-
-
         public Logic()
         {
             context = new NorthwindContext();

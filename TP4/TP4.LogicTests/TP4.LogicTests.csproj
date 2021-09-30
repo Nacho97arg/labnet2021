@@ -76,9 +76,9 @@
       <Project>{ad602260-9c4a-469c-a64e-df1e4ef8be36}</Project>
       <Name>TP4.Entities</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TP2.Data\TP2.Data.csproj">
+    <ProjectReference Include="..\TP2.Data\TP4.Data.csproj">
       <Project>{817d0a71-a2fb-4a76-a9ad-07f7e0eaa4df}</Project>
-      <Name>TP2.Data</Name>
+      <Name>TP4.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\TP4.Logic\TP4.Logic.csproj">
       <Project>{CDFF15EA-ACC3-44F3-AE0D-10A8F520B6F7}</Project>

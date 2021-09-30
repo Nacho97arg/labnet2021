@@ -1,20 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using TP4.Logic;
+using TP4.Common.CustomExceptions;
 using TP4.Entities;
+using TP4.Logic;
 
 namespace TP4.UI
 {
     public partial class CustomersMenu : Form
     {
-        private readonly CustomerLogic customerLogic;
+        private readonly ILogic<Customers> customerLogic;
         public CustomersMenu()
         {
             customerLogic = new CustomerLogic();
@@ -24,14 +18,7 @@ namespace TP4.UI
 
         private void SetDataSource()
         {
-            try
-            {
-                dgvCustomers.DataSource = customerLogic.GetAll();
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show($"An error occurred while trying to connect to the database\n{e.Message}", "Connection error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            dgvCustomers.DataSource = customerLogic.GetAll();            
         }
 
         private void TsbCreate_Click(object sender, EventArgs e)
@@ -55,9 +42,9 @@ namespace TP4.UI
                 customerLogic.DeleteOne(dgvSelectedCustomer);
                 SetDataSource();
             }
-            catch (Exception ex)
+            catch (DatabaseIntegrityException ex)
             {
-                MessageBox.Show($"This customer forms part of an order. Please delete that order first\nError message:\n{ex.InnerException.InnerException.Message}", "Connection error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

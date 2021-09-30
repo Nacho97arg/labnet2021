@@ -7,11 +7,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TP4.UI", "UI\TP4.UI.csproj"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TP4.Logic", "TP4.Logic\TP4.Logic.csproj", "{CDFF15EA-ACC3-44F3-AE0D-10A8F520B6F7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TP2.Data", "TP2.Data\TP2.Data.csproj", "{817D0A71-A2FB-4A76-A9AD-07F7E0EAA4DF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TP4.Data", "TP2.Data\TP4.Data.csproj", "{817D0A71-A2FB-4A76-A9AD-07F7E0EAA4DF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TP4.Entities", "Entities\TP4.Entities.csproj", "{AD602260-9C4A-469C-A64E-DF1E4EF8BE36}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TP4.LogicTests", "TP4.LogicTests\TP4.LogicTests.csproj", "{F1382649-3556-48EB-940E-C5E37617BA8B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TP4.Common", "TP4.Common\TP4.Common.csproj", "{BA709A45-E9F5-42C3-AC8C-148B30B1EC22}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{F1382649-3556-48EB-940E-C5E37617BA8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F1382649-3556-48EB-940E-C5E37617BA8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F1382649-3556-48EB-940E-C5E37617BA8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA709A45-E9F5-42C3-AC8C-148B30B1EC22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA709A45-E9F5-42C3-AC8C-148B30B1EC22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA709A45-E9F5-42C3-AC8C-148B30B1EC22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA709A45-E9F5-42C3-AC8C-148B30B1EC22}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

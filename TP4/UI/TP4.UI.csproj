@@ -128,6 +128,10 @@
       <Project>{AD602260-9C4A-469C-A64E-DF1E4EF8BE36}</Project>
       <Name>TP4.Entities</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TP4.Common\TP4.Common.csproj">
+      <Project>{ba709a45-e9f5-42c3-ac8c-148b30b1ec22}</Project>
+      <Name>TP4.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TP4.Logic\TP4.Logic.csproj">
       <Project>{CDFF15EA-ACC3-44F3-AE0D-10A8F520B6F7}</Project>
       <Name>TP4.Logic</Name>

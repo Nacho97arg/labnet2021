@@ -110,7 +110,6 @@ namespace TP4.UI
             this.Controls.Add(this.toolStripContainer1);
             this.Name = "Form1";
             this.Text = "Trabajo Practico EF";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.toolStripContainer1.ContentPanel.ResumeLayout(false);
             this.toolStripContainer1.TopToolStripPanel.ResumeLayout(false);
             this.toolStripContainer1.TopToolStripPanel.PerformLayout();

@@ -1,29 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using TP4.Logic;
+using TP4.Common.CustomExceptions;
 using TP4.Entities;
+using TP4.Logic;
 
 namespace TP4.UI
 {
     public partial class CustomerForm : Form
     {
-        private readonly CustomerLogic customerLogic;
+        private readonly ILogic<Customers> customerLogic;
         private Customers selectedCustomer;
         private readonly Mode mode;
-        public CustomerForm(CustomerLogic customerLogic)
+        public CustomerForm(ILogic<Customers> customerLogic)
         {
             InitializeComponent();
             mode = Mode.New;
             this.customerLogic = customerLogic;
         }
-        public CustomerForm(Customers customer, CustomerLogic customerLogic) : this(customerLogic)
+        public CustomerForm(Customers customer, ILogic<Customers> customerLogic) : this(customerLogic)
         {
             mode = Mode.Modify;
             selectedCustomer = customer;
@@ -42,13 +36,12 @@ namespace TP4.UI
                 {
                     case Mode.New:
                         Customers newCustomer = new Customers();
+                        ValidateRequiredFields();
                         newCustomer = FillCustomerMembers(newCustomer);
-                        if ((newCustomer.CompanyName == "") || (newCustomer.CustomerID == ""))
-                            throw new Exception("Verify that the required fields have been completed");
-                        else
-                            this.customerLogic.AddOne(newCustomer);
+                        this.customerLogic.AddOne(newCustomer);
                         break;
                     case Mode.Modify:
+                        ValidateRequiredFields();
                         selectedCustomer = FillCustomerMembers(selectedCustomer);
                         this.customerLogic.Update();
                         break;
@@ -57,13 +50,18 @@ namespace TP4.UI
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"An error occurred while trying to save the customer\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"An error occurred while trying to save the customer\n\n{ex.Message}\n\n{ex.GetType()}\n{ex.StackTrace}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+        private void ValidateRequiredFields()
+        {
+            if ((tbCompanyName.Text == "") || (tbCustomerID.Text == ""))
+                throw new RequiredFieldsIncompleteException();
         }
         Customers FillCustomerMembers(Customers customer)
         {
-            if (int.TryParse(tbCustomerID.Text, out int parsed))
-                throw new Exception("The customer ID can only be made up of letters");
+            if (int.TryParse(tbCustomerID.Text, out _))
+                throw new ArgumentException("The customer ID can only be made of letters");
             else
             {
                 customer.CustomerID = tbCustomerID.Text.ToUpper();

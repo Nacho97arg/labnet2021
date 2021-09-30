@@ -9,21 +9,22 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using TP4.Logic;
 using TP4.Entities;
+using TP4.Common.CustomExceptions;
 
 namespace TP4.UI
 {
     public partial class SupplierForm : Form
     {
-        private readonly SupplierLogic supplierLogic;
+        private readonly ILogic<Suppliers> supplierLogic;
         private Suppliers selectedSupplier;
         private readonly Mode mode;
-        public SupplierForm(SupplierLogic supplierLogic)
+        public SupplierForm(ILogic<Suppliers> supplierLogic)
         {
             InitializeComponent();
             mode = Mode.New;
             this.supplierLogic = supplierLogic;
         }
-        public SupplierForm(Suppliers supplier, SupplierLogic supplierLogic) : this(supplierLogic)
+        public SupplierForm(Suppliers supplier, ILogic<Suppliers> supplierLogic) : this(supplierLogic)
         {
             mode = Mode.Modify;
             selectedSupplier = supplier;
@@ -62,30 +63,33 @@ namespace TP4.UI
         }
         private void BtnSave_Click(object sender, EventArgs e)
         {
-
             try
             {
                 switch (mode)
                 {
                     case Mode.New:
                         Suppliers newSupplier = new Suppliers();
-                        newSupplier = FillSupplierMembers(newSupplier);
-                        if (newSupplier.CompanyName == "")
-                            throw new Exception("Verify that the required fields have been completed");
-                        else
-                            this.supplierLogic.AddOne(newSupplier);
+                        ValidateRequiredFields();
+                        newSupplier = FillSupplierMembers(newSupplier);                        
+                        this.supplierLogic.AddOne(newSupplier);
                         break;
                     case Mode.Modify:
+                        ValidateRequiredFields();
                         selectedSupplier = FillSupplierMembers(selectedSupplier);
                         this.supplierLogic.Update();
                         break;
                 }
                 this.Close();
             }
-            catch (Exception exeption)
+            catch (Exception ex)
             {
-                MessageBox.Show($"An error occurred while trying to save the supplier\n{exeption.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"An error occurred while trying to save the supplier\n\n{ex.Message}\n\n{ex.GetType()}\n{ex.StackTrace}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+        private void ValidateRequiredFields()
+        {
+            if (tbCompanyName.Text == "")
+                throw new RequiredFieldsIncompleteException();
         }
         private void BtnCancel_Click(object sender, EventArgs e)
         {

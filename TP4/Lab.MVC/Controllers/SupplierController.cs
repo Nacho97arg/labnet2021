@@ -23,7 +23,7 @@ namespace Lab.MVC.Controllers
             }
             catch(Exception e)
             {
-                ViewBag.ErrorTitle = "The was an error while trying to get the list of suppliers";
+                ViewBag.ErrorTitle = "There was an error while trying to get the list of suppliers";
                 return View("Error", e);
             }
         }
@@ -53,7 +53,7 @@ namespace Lab.MVC.Controllers
             }
             catch(Exception e)
             {
-                ViewBag.ErrorTitle = "The was an error while trying to save the supplier";
+                ViewBag.ErrorTitle = "There was an error while trying to save the supplier";
                 return View("Error", e);
             }
         }
@@ -62,12 +62,12 @@ namespace Lab.MVC.Controllers
             try
             {
                 Suppliers supplierToModify = supplierLogic.GetOne(id);
-                SupplierView supplierView = Helpers.Mappers.MapSupplierToView(supplierToModify);
+                SupplierView supplierView = Mappers.MapSupplierToView(supplierToModify);
                 return View("FormSupplier",supplierView);
             }
             catch(Exception e)
             {
-                ViewBag.ErrorTitle = "The was an error while trying get the supplier";
+                ViewBag.ErrorTitle = "There was an error while trying get the supplier";
                 return View("Error", e);
             }
         }
@@ -82,7 +82,7 @@ namespace Lab.MVC.Controllers
             }
             catch (Exception e)
             {
-                ViewBag.ErrorTitle = "The was an error while trying to delete the supplier";
+                ViewBag.ErrorTitle = "There was an error while trying to delete the supplier";
                 return View("Error", e);
             }
         }

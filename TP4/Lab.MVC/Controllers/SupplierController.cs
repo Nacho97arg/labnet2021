@@ -18,13 +18,7 @@ namespace Lab.MVC.Controllers
             try
             {
                 List<Suppliers> suppliers = supplierLogic.GetAll();
-                List<SupplierView> suppliersView = suppliers.Select(s => new SupplierView
-                {
-                    SupplierID = s.SupplierID,
-                    CompanyName = s.CompanyName,
-                    Address = s.Address,
-                    City = s.City
-                }).ToList();
+                List<SupplierView> suppliersView = Mappers.MapMultipleSuppliersToViews(suppliers);
                 return View(suppliersView);
             }
             catch(Exception e)
@@ -36,7 +30,7 @@ namespace Lab.MVC.Controllers
 
         public ActionResult Insert()
         {
-            return View();
+            return View("FormSupplier");
         }
         [HttpPost]
         public ActionResult Insert(SupplierView supplierView)
@@ -46,13 +40,13 @@ namespace Lab.MVC.Controllers
                 if (supplierView.SupplierID == 0)
                 {
                     Suppliers newSupplier = new Suppliers();
-                    Helpers.Helpers.MapViewToSupplier(supplierView, newSupplier);
+                    Mappers.MapViewToSupplier(supplierView, newSupplier);
                     supplierLogic.AddOne(newSupplier); 
                 }
                 else
                 {
                     Suppliers supplierToUpdate = supplierLogic.GetOne(supplierView.SupplierID);
-                    Helpers.Helpers.MapViewToSupplier(supplierView, supplierToUpdate);
+                    Mappers.MapViewToSupplier(supplierView, supplierToUpdate);
                     supplierLogic.Update();
                 }
                 return RedirectToAction("Index");
@@ -68,8 +62,8 @@ namespace Lab.MVC.Controllers
             try
             {
                 Suppliers supplierToModify = supplierLogic.GetOne(id);
-                SupplierView supplierView = Helpers.Helpers.MapEntityToModel(supplierToModify);
-                return View("Insert",supplierView);
+                SupplierView supplierView = Helpers.Mappers.MapSupplierToView(supplierToModify);
+                return View("FormSupplier",supplierView);
             }
             catch(Exception e)
             {

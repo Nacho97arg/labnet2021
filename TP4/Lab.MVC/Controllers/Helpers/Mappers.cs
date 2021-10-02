@@ -7,9 +7,9 @@ using TP4.Entities;
 
 namespace Lab.MVC.Controllers.Helpers
 {
-    public static class Helpers
+    public static class Mappers
     {
-        public static SupplierView MapEntityToModel(Suppliers supplier)
+        public static SupplierView MapSupplierToView(Suppliers supplier)
         {
             SupplierView supplierView = new SupplierView 
             {   SupplierID = supplier.SupplierID, 
@@ -25,6 +25,18 @@ namespace Lab.MVC.Controllers.Helpers
             supplier.CompanyName = supplierView.CompanyName;
             supplier.Address = supplierView.Address;
             supplier.City = supplierView.City;
+        }
+
+        public static List<SupplierView> MapMultipleSuppliersToViews(List<Suppliers> suppliers)
+        {
+            List<SupplierView> suppliersViews = suppliers.Select(s => new SupplierView
+                                                {
+                                                    SupplierID = s.SupplierID,
+                                                    CompanyName = s.CompanyName,
+                                                    Address = s.Address,
+                                                    City = s.City
+                                                }).ToList();
+            return suppliersViews;
         }
     }
 }

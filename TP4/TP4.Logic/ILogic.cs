@@ -9,6 +9,7 @@ namespace TP4.Logic
     public interface ILogic<T>
     {
         List<T> GetAll();
+        T GetOne(int id);
         void AddOne(T objectToAdd);
         void DeleteOne(T objectToDelete);
         void Update();

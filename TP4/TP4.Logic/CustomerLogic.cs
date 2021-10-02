@@ -19,6 +19,17 @@ namespace TP4.Logic
                 throw new ConnectionException(e.Message);
             }
         }
+        public Customers GetOne(int id)
+        {
+            try
+            {
+                return context.Customers.Find(id);
+            }
+            catch(Exception e)
+            {
+                throw new Exception($"There was an error while trying to get the customer\n\n{e.Message}");
+            }
+        }
         public void AddOne(Customers newCustomer)
         {
             try

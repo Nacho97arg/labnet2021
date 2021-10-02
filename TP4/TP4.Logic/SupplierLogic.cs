@@ -24,6 +24,17 @@ namespace TP4.Logic
             }
 
         }
+        public Suppliers GetOne(int id)
+        {
+            try
+            {
+                return context.Suppliers.Find(id);
+            }
+            catch(Exception e)
+            {
+                throw new Exception($"There was an error while trying to get the supplier\n\n{e.Message}");
+            }
+        }
         public void AddOne(Suppliers newSupplier)
         {
             try

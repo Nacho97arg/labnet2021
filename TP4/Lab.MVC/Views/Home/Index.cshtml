@@ -1,0 +1,9 @@
+﻿@{
+    ViewBag.Title = "Home";
+}
+
+<div class="jumbotron">
+    <h2 style="font-weight: bold">Welcome to the suppliers control panel</h2>
+    <p class="lead">Please click the "Suppliers List" option in the navigation bar or in the button below to start</p>
+    <p>@Html.ActionLink("Suppliers List", "Index", "Supplier",null,null,null,null, new { @class= "btn btn-primary btn-lg" })</p>
+</div>

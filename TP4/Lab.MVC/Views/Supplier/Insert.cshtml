@@ -1,0 +1,30 @@
+﻿@model Lab.MVC.Models.SupplierView
+@{
+    ViewBag.Title = "Insert Supplier";
+}
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+<p></p>
+@using (Html.BeginForm("Insert", "Supplier", FormMethod.Post))
+{
+
+    @Html.HiddenFor(s => s.SupplierID)
+    <p></p>
+    <label for="CompanyName">Company Name: </label>
+    @Html.EditorFor(s => s.CompanyName, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(r => r.CompanyName, "", new { @class = "text-danger" });
+    <br />
+    <label for="Address">Address: </label>
+    <br />
+    @Html.EditorFor(s => s.Address, new { htmlAttributes = new { @class = "form-control" } });
+    <br />
+    <label for="City">City: </label>
+    <br />
+    @Html.EditorFor(s => s.City, new { htmlAttributes = new { @class = "form-control" } });
+    <br />
+    <p></p>
+    <input type="submit" value="Save" class="btn btn-success" />
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

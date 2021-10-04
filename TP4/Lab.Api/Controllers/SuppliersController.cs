@@ -61,6 +61,11 @@ namespace Lab.Api.Controllers
             }
         }
         //PUT: /api/suppliers
+        /// <summary>
+        /// Inserts a new supplier or modifies one depending on the value of the given id.
+        /// </summary>
+        /// <param name="suppliersRequest"></param>
+        /// <returns></returns>
         public IHttpActionResult Put([FromBody] SuppliersRequest suppliersRequest)
         {
             try

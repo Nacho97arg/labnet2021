@@ -3,7 +3,9 @@
 }
 
 <div class="jumbotron">
-    <h2 style="font-weight: bold">Welcome to the suppliers control panel</h2>
-    <p class="lead">Please click the "Suppliers List" option in the navigation bar or in the button below to start</p>
-    <p>@Html.ActionLink("Suppliers List", "Index", "Supplier",null,null,null,null, new { @class= "btn btn-primary btn-lg" })</p>
+    <h2 style="font-weight: bold">Welcome to the MVC project</h2>
+    <p class="lead">Please click the "Suppliers List" option in the navigation bar or in the button below to a list of suppliers from the NorthWind database</p>
+    <p>@Html.ActionLink("Suppliers List", "Index", "Supplier", null, null, null, null, new { @class = "btn btn-primary btn-lg" })</p>
+    <p class="lead">Or click "StarWars Characters" to see a list of characters of the StarWars franchise, using the StarWars API.</p>
+    <p>@Html.ActionLink("StarWars Characters", "Index", "StarWars", null, null, null, null, new { @class = "btn btn-primary btn-lg" })</p>
 </div>

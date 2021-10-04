@@ -5,6 +5,9 @@ using System.Web;
 
 namespace Lab.MVC.Models
 {
+    /// <summary>
+    /// Represents the people response from the StarWars API
+    /// </summary>
     public class PeopleResponse
     {
         public int Count { get; set; }
@@ -16,19 +19,11 @@ namespace Lab.MVC.Models
     {
         public string Birth_Year { get; set; }
         public string Eye_Color { get; set; }
-        public string[] Films { get; set; }
         public string Gender { get; set; }
         public string Hair_Color { get; set; }
         public string Height { get; set; }
-        public string Homeworld { get; set; }
         public string Mass { get; set; }
         public string Name { get; set; }
         public string Skin_Color { get; set; }
-        public string Created { get; set; }
-        public string Edited { get; set; }
-        public string[] Species { get; set; }
-        public string[] Starships { get; set; }
-        public string Url { get; set; }
-        public string[] Vehicles { get; set; }
     }
 }

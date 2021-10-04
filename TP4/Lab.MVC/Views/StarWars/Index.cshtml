@@ -65,3 +65,13 @@
     </tr>
 }
 </table>
+<div>
+    @if (Model.Previous != null) 
+    {
+        @Html.ActionLink("Previous Page", "IndexPage", new { pageUrl = Model.Previous }, new { @class = "btn btn-primary", @id = "btnPrevPage" });
+    }
+    @if (Model.Next != null)
+    {
+        @Html.ActionLink("Next Page", "IndexPage", new { pageUrl = Model.Next }, new { @class = "btn btn-primary", @id = "btnNextPage" });
+    }
+</div>

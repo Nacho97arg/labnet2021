@@ -6,7 +6,7 @@ using TP4.Entities;
 
 namespace TP4.Logic
 {
-    public class CustomerLogic : Logic, ILogic<Customers>
+    public class CustomerLogic : Logic, ILogic<Customers,string>
     {
         public List<Customers> GetAll()
         {
@@ -19,7 +19,7 @@ namespace TP4.Logic
                 throw new ConnectionException(e.Message);
             }
         }
-        public Customers GetOne(int id)
+        public Customers GetOne(string id)
         {
             try
             {

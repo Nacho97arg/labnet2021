@@ -6,7 +6,7 @@ using TP4.Entities;
 
 namespace TP4.Logic
 {
-    public class SupplierLogic : Logic, ILogic<Suppliers>
+    public class SupplierLogic : Logic, ILogic<Suppliers,int>
     {
         public List<Suppliers> GetAll()
         {

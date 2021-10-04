@@ -1,0 +1,68 @@
+﻿@model Lab.MVC.Models.PeopleResponse
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+
+<table class="table table-hover">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Results[0].Name)
+        </th>
+        <th>
+            
+            @Html.DisplayName("Year of Birth")
+        </th>
+        <th>
+            @Html.DisplayName("Eye Color")
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Results[0].Gender)
+        </th>
+        <th>
+            @Html.DisplayName("Hair Color")
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Results[0].Height)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Results[0].Mass)
+        </th>
+        <th>
+            @Html.DisplayName("Skin Color")
+        </th>
+    </tr>
+
+@foreach (var item in Model.Results) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Birth_Year)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Eye_Color)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Gender)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hair_Color)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Height)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Mass)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Skin_Color)
+        </td>
+    </tr>
+}
+
+</table>

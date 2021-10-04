@@ -12,7 +12,7 @@ namespace Lab.MVC.Controllers
 {
     public class SupplierController : Controller
     {
-        readonly ILogic<Suppliers> supplierLogic = new SupplierLogic();
+        readonly ILogic<Suppliers,int> supplierLogic = new SupplierLogic();
         public ActionResult Index()
         {
             try

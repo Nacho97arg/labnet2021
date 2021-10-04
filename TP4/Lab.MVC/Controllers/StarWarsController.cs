@@ -29,6 +29,7 @@ namespace Lab.MVC.Controllers
             }
             catch (Exception ex)
             {
+                ViewBag.ErrorTitle = "There was an error while trying to get the list of characters";
                 return View("Error", ex);                
             }
         }

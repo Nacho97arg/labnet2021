@@ -133,7 +133,7 @@
     <Compile Include="Controllers\Helpers\Mappers.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SupplierController.cs" />
-    <Compile Include="Controllers\SwController.cs" />
+    <Compile Include="Controllers\StarWarsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -178,7 +178,8 @@
     <Content Include="Views\Supplier\Index.cshtml" />
     <Content Include="Views\Supplier\FormSupplier.cshtml" />
     <Content Include="Views\Supplier\Error.cshtml" />
-    <Content Include="Views\Sw\Index.cshtml" />
+    <Content Include="Views\StarWars\Index.cshtml" />
+    <Content Include="Views\StarWars\Error.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

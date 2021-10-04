@@ -228,7 +228,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\HelpPage\Views\Supplier\" />
-    <Folder Include="Views\Suppliers\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

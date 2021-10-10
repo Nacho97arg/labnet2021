@@ -61,7 +61,7 @@ namespace TP4.Logic
         public void Update()
         {
             try
-            {                
+            {
                 context.SaveChanges();
             }
             catch (Exception e)

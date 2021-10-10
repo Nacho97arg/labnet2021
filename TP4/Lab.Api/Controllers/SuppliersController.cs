@@ -21,7 +21,7 @@ namespace Lab.Api.Controllers
             {
                 List<Suppliers> suppliers = supplierLogic.GetAll();
                 List<SuppliersResponse> suppliersResponses = Mappers.MapListMapMultipleSuppliersToResponses(suppliers);
-                return Ok(suppliersResponses);
+                return Json(suppliersResponses);                
             }
             catch (Exception ex)
             {
@@ -37,7 +37,7 @@ namespace Lab.Api.Controllers
                 if (supplier == null) return NotFound();
 
                 SuppliersResponse supplierResponse = Mappers.MapSupplierToResponse(supplier);
-                return Ok(supplierResponse);              
+                return Json(supplierResponse);              
             }
             catch (Exception ex)
             {

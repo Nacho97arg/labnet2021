@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Lab.MVC.Models
+namespace Lab.External.Models
 {
     /// <summary>
     /// Represents the people response from the StarWars API
@@ -25,5 +26,5 @@ namespace Lab.MVC.Models
         public string Mass { get; set; }
         public string Name { get; set; }
         public string Skin_Color { get; set; }
-    }
+        }
 }

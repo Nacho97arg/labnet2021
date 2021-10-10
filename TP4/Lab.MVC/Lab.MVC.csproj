@@ -137,7 +137,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\PeopleResponse.cs" />
     <Compile Include="Models\SupplierView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -201,6 +200,14 @@
     <ProjectReference Include="..\Entities\TP4.Entities.csproj">
       <Project>{ad602260-9c4a-469c-a64e-df1e4ef8be36}</Project>
       <Name>TP4.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Lab.ExternalLogic\Lab.External.Logic.csproj">
+      <Project>{e9d8448c-ce90-4034-9bfa-4d625f1bc668}</Project>
+      <Name>Lab.External.Logic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Lab.ExternalModels\Lab.External.Models.csproj">
+      <Project>{6701c16c-3f96-491e-a526-13b64363ceea}</Project>
+      <Name>Lab.External.Models</Name>
     </ProjectReference>
     <ProjectReference Include="..\TP4.Logic\TP4.Logic.csproj">
       <Project>{cdff15ea-acc3-44f3-ae0d-10a8f520b6f7}</Project>

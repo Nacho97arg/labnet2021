@@ -15,16 +15,16 @@ namespace TP4.UI
 {
     public partial class SupplierForm : Form
     {
-        private readonly ILogic<Suppliers> supplierLogic;
+        private readonly ILogic<Suppliers, int> supplierLogic;
         private Suppliers selectedSupplier;
         private readonly Mode mode;
-        public SupplierForm(ILogic<Suppliers> supplierLogic)
+        public SupplierForm(ILogic<Suppliers, int> supplierLogic)
         {
             InitializeComponent();
             mode = Mode.New;
             this.supplierLogic = supplierLogic;
         }
-        public SupplierForm(Suppliers supplier, ILogic<Suppliers> supplierLogic) : this(supplierLogic)
+        public SupplierForm(Suppliers supplier, ILogic<Suppliers, int> supplierLogic) : this(supplierLogic)
         {
             mode = Mode.Modify;
             selectedSupplier = supplier;
@@ -100,6 +100,5 @@ namespace TP4.UI
             New,
             Modify
         }
-
     }
 }

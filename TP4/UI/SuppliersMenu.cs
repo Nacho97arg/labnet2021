@@ -8,7 +8,7 @@ namespace TP4.UI
 {
     public partial class SuppliersMenu : Form
     {
-        private readonly ILogic<Suppliers> supplierLogic;
+        private readonly ILogic<Suppliers, int> supplierLogic;
         public SuppliersMenu()
         {
             supplierLogic = new SupplierLogic();

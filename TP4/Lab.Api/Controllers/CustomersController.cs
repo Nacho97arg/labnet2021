@@ -21,7 +21,7 @@ namespace Lab.Api.Controllers
             {
                 List<Customers> customers = customerLogic.GetAll();
                 List<CustomersResponse> customersResponses = Mappers.MapListMapMultipleCustomersToResponses(customers);
-                return Ok(customersResponses);
+                return Json(customersResponses);
             }
             catch (Exception ex)
             {
@@ -37,7 +37,7 @@ namespace Lab.Api.Controllers
                 if (customer == null) return NotFound();
 
                 CustomersResponse customerResponse = Mappers.MapCustomerToResponse(customer);
-                return Ok(customerResponse);
+                return Json(customerResponse);
             }
             catch (Exception ex)
             {
@@ -52,7 +52,7 @@ namespace Lab.Api.Controllers
                 Customers customerToDelete = customerLogic.GetOne(id);
                 if (customerToDelete == null) return NotFound();
 
-                customerLogic.DeleteOne(customerToDelete);
+                customerLogic.DeleteOne(customerToDelete);                
                 return Ok();
             }
             catch (Exception ex)

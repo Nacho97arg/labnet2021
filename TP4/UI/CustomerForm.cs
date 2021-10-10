@@ -8,16 +8,16 @@ namespace TP4.UI
 {
     public partial class CustomerForm : Form
     {
-        private readonly ILogic<Customers> customerLogic;
+        private readonly ILogic<Customers, string> customerLogic;
         private Customers selectedCustomer;
         private readonly Mode mode;
-        public CustomerForm(ILogic<Customers> customerLogic)
+        public CustomerForm(ILogic<Customers, string> customerLogic)
         {
             InitializeComponent();
             mode = Mode.New;
             this.customerLogic = customerLogic;
         }
-        public CustomerForm(Customers customer, ILogic<Customers> customerLogic) : this(customerLogic)
+        public CustomerForm(Customers customer, ILogic<Customers, string> customerLogic) : this(customerLogic)
         {
             mode = Mode.Modify;
             selectedCustomer = customer;

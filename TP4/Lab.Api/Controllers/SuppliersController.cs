@@ -8,9 +8,11 @@ using TP4.Logic;
 using TP4.Entities;
 using Lab.Api.Models;
 using Lab.Api.Controllers.Helpers;
+using System.Web.Http.Cors;
 
 namespace Lab.Api.Controllers
 {
+    [EnableCors(origins: "*",headers:"*",methods:"*")]
     public class SuppliersController : ApiController
     {
         private readonly ILogic<Suppliers,int> supplierLogic = new SupplierLogic();

@@ -32,8 +32,8 @@ export class ListComponent implements OnInit {
   }
   deleteSupplier(id:number):void{
     this.supplierService.deleteSupplier(id).subscribe( res => {
+      this.getSuppliers();
     });
-    this.getSuppliers();
   }
   fillForm(supplier:Supplier):void{
     this.formCommunication.sendSupplier(supplier);

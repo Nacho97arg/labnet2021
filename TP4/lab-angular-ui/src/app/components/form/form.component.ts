@@ -61,7 +61,7 @@ export class FormComponent implements OnInit {
         this.refreshList();
       })
     }
-    this.form.reset();
+    this.cleanForm();
   }
 
   fillForm(supplier:Supplier):void{
@@ -84,6 +84,16 @@ export class FormComponent implements OnInit {
     supplier.Address=this.addressCtl?.value;
 
     return supplier;
+  }
+  cleanForm():void{
+    this.form.setValue({
+      supplierId: 0,
+      companyName: "",
+      contactName: "",
+      address: "",
+      city: "",
+      country: ""
+    });
   }
   refreshList():void{
     this.formCommunication.refreshList(true);

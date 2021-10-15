@@ -1,5 +1,5 @@
 
-<form [formGroup]="form" (ngSubmit)="onSubmit()" >
+<form [formGroup]="form" (ngSubmit)="this.onSubmit()" >
     <input formControlName="supplierId" type="text" hidden>
     <div class="input-group mb-2">
         <label class="input-group-text">Company Name</label>
@@ -22,5 +22,5 @@
         <input formControlName="country" type="text" class="form-control">
     </div>
     <button [disabled]="!this.form.valid" type="submit" class="m-2 btn btn-primary">Save</button>
-    <button class="btn btn-danger" (click)="this.form.reset();">Cancel</button>
+    <button class="btn btn-danger" (click)="this.cleanForm();">Cancel</button>
 </form>

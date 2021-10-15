@@ -5,8 +5,16 @@
     <span class="fs-4">Suppliers ABM</span>
   </a>
 </header>
-<main>
-  <app-form></app-form>
-  <app-list></app-list>
-</main>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-4">
+      <div class="card sticky-top">
+        <app-form></app-form>
+      </div>
+    </div>
+    <div class="col-8">
+      <app-list></app-list>
+    </div>
+  </div>
+</div>
 <router-outlet></router-outlet>

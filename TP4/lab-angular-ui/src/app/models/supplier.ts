@@ -5,4 +5,13 @@ export class Supplier{
     Address!: string;
     City!: string;
     Country!: string;
+
+    constructor(){
+        this.SupplierID = 0;
+        this.CompanyName = "";
+        this.ContactName = "";
+        this.Address = "";
+        this.City = "";
+        this.Country = "";
+    }
 }

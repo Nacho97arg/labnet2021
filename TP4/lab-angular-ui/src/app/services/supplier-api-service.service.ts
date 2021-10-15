@@ -26,4 +26,8 @@ export class SupplierApiService {
     let url = environment.apiSuppliers + this.endPoint;
     return this.http.put(url,newSupplier);
   }
+  public updateSupplier(modifiedSupplier: Supplier): Observable<any>{
+    let url = environment.apiSuppliers + this.endPoint + modifiedSupplier.SupplierID.toString();
+    return this.http.put(url,modifiedSupplier);
+  }
 }

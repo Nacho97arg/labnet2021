@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Supplier } from 'src/app/models/supplier';
+import { FormCommunicationService } from 'src/app/services/form-communication.service';
 import { SupplierApiService } from 'src/app/services/supplier-api-service.service';
 
 @Component({
@@ -11,24 +12,33 @@ import { SupplierApiService } from 'src/app/services/supplier-api-service.servic
 export class ListComponent implements OnInit {
   public suppliers: Array<Supplier> = [];
 
-  constructor(private supplierService: SupplierApiService) {}
+  constructor(private readonly supplierService: SupplierApiService, private readonly formCommunication:FormCommunicationService) {}
 
   ngOnInit(): void {
     this.getSuppliers();
+    
+    this.formCommunication.refresh$.subscribe(resp =>{
+      if (resp) {
+        this.getSuppliers();
+        this.formCommunication.refreshList(false);
+      }
+    })
   }
 
   private getSuppliers(): void{
     this.supplierService.getAllSupliers().subscribe( res => {
       this.suppliers = res;
-      console.log(this.suppliers);
     });
   }
   deleteSupplier(id:number):void{
     this.supplierService.deleteSupplier(id).subscribe( res => {
-      console.log('supplier eliminado');
     });
     this.getSuppliers();
   }
+  fillForm(supplier:Supplier):void{
+    this.formCommunication.sendSupplier(supplier);
+  }
+
 
 
 }

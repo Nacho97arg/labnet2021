@@ -28,11 +28,17 @@ export class ListComponent implements OnInit {
   private getSuppliers(): void{
     this.supplierService.getAllSupliers().subscribe( res => {
       this.suppliers = res;
+    },
+    error => {
+      alert(error.error.Message);
     });
   }
   deleteSupplier(id:number):void{
     this.supplierService.deleteSupplier(id).subscribe( res => {
       this.getSuppliers();
+    },
+    error => {
+      alert(error.error.Message);
     });
   }
   fillForm(supplier:Supplier):void{

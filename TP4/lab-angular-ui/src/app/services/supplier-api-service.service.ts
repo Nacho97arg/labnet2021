@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable,throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
 
 import { environment } from 'src/environments/environment';
 import { Supplier } from '../models/supplier';
@@ -17,27 +17,18 @@ export class SupplierApiService {
 
   public getAllSupliers() : Observable<Array<Supplier>>{
       let url = environment.apiSuppliers + this.endPoint;
-      return this.http.get<Array<Supplier>>(url).pipe(
-        catchError(this.errorHandler));
+      return this.http.get<Array<Supplier>>(url)
   }
   public deleteSupplier(id:number): Observable<any>{
     let url = environment.apiSuppliers + this.endPoint + id.toString();
-    return this.http.delete(url).pipe(
-      catchError(this.errorHandler));
+    return this.http.delete(url)
   }
   public addSupplier(newSupplier: Supplier): Observable<any>{
     let url = environment.apiSuppliers + this.endPoint;
-    return this.http.put(url,newSupplier).pipe(
-      catchError(this.errorHandler));
+    return this.http.put(url,newSupplier)
   }
   public updateSupplier(modifiedSupplier: Supplier): Observable<any>{
     let url = environment.apiSuppliers + this.endPoint + modifiedSupplier.SupplierID.toString();
-    return this.http.put(url,modifiedSupplier).pipe(
-      catchError(this.errorHandler));
-  }
-
-  private errorHandler(error : HttpErrorResponse){
-    console.error(error.error.ExceptionMessage);    
-    return throwError(error);
+    return this.http.put(url,modifiedSupplier)
   }
 }

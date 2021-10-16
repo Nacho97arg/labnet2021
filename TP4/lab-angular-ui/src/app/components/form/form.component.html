@@ -22,5 +22,5 @@
         <input formControlName="country" type="text" class="form-control">
     </div>
     <button [disabled]="!this.form.valid" type="submit" class="m-2 btn btn-primary">Save</button>
-    <button class="btn btn-danger" (click)="this.cleanForm();">Cancel</button>
+    <button type="button" class="btn btn-danger" (click)="this.cleanForm();">Cancel</button>
 </form>

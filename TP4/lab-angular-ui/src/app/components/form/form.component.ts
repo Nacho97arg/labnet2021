@@ -53,12 +53,18 @@ export class FormComponent implements OnInit {
       let newSupplier = this.form.value;
       this.supplierService.addSupplier(newSupplier).subscribe( res =>{
         this.refreshList();
+      },
+      error => {
+        alert(error.error.ExceptionMessage);
       });
     }
     else{
       let modifiedSupplier = this.mapFormToSupplier();
       this.supplierService.updateSupplier(modifiedSupplier).subscribe( res => {
         this.refreshList();
+      },
+      error => {
+        alert(error.error.ExceptionMessage);
       })
     }
     this.cleanForm();

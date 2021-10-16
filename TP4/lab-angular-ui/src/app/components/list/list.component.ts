@@ -30,7 +30,7 @@ export class ListComponent implements OnInit {
       this.suppliers = res;
     },
     error => {
-      alert(error.error.Message);
+      alert(error.error.ExceptionMessage);
     });
   }
   deleteSupplier(id:number):void{
@@ -38,7 +38,7 @@ export class ListComponent implements OnInit {
       this.getSuppliers();
     },
     error => {
-      alert(error.error.Message);
+      alert(error.error.ExceptionMessage);
     });
   }
   fillForm(supplier:Supplier):void{

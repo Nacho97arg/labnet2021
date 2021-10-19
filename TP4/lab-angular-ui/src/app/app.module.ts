@@ -4,6 +4,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+
+import { ToastrModule } from 'ngx-toastr';
 
 import { AppComponent } from './app.component';
 import { ListComponent } from './components/list/list.component';
@@ -22,7 +25,9 @@ import { FormComponent } from './components/form/form.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CommonModule,
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+import { ToastrService } from 'ngx-toastr';
+
 import { SupplierApiService } from 'src/app/services/supplier-api-service.service';
 import { FormCommunicationService } from 'src/app/services/form-communication.service';
 import { Supplier } from 'src/app/models/supplier';
@@ -32,11 +34,11 @@ export class FormComponent implements OnInit {
     return this.form.get('country');
   }
 
-  constructor(private readonly fb:FormBuilder, private readonly supplierService: SupplierApiService, private readonly formCommunication:FormCommunicationService) { }
+  constructor(private readonly fb:FormBuilder, private readonly supplierService: SupplierApiService, private readonly formCommunication:FormCommunicationService, private readonly toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      supplierId: [''],
+      supplierId: [0],
       companyName: ['',[Validators.required, Validators.maxLength(40)]],
       contactName: ['',[Validators.maxLength(30)]],
       address: ['',[Validators.maxLength(60)]],
@@ -49,25 +51,29 @@ export class FormComponent implements OnInit {
   }
 
   onSubmit():void{
-    if (this.idSupplierCtl?.value === 0){
-      let newSupplier = this.form.value;
+    if (this.idSupplierCtl?.value === null){
+      let newSupplier = this.mapFormToSupplier();
       this.supplierService.addSupplier(newSupplier).subscribe( res =>{
         this.refreshList();
+        this.toastr.success("New supplier saved!");
       },
       error => {
-        alert(error.error.ExceptionMessage);
+        console.error(error.error.ExceptionMessage);
+        this.toastr.error(error.error.ExceptionMessage, "There was an error while trying to save the supplier");
       });
     }
     else{
       let modifiedSupplier = this.mapFormToSupplier();
       this.supplierService.updateSupplier(modifiedSupplier).subscribe( res => {
         this.refreshList();
+        this.toastr.success("Changes saved!");
       },
       error => {
-        alert(error.error.ExceptionMessage);
+        console.error(error.error.ExceptionMessage);
+        this.toastr.error(error.error.ExceptionMessage, "There was an error while trying to save the supplier");
       })
     }
-    this.cleanForm();
+    this.form.reset();
   }
 
   fillForm(supplier:Supplier):void{
@@ -80,9 +86,10 @@ export class FormComponent implements OnInit {
       country: supplier.Country
     });
   }
+
   mapFormToSupplier():Supplier{
     let supplier = new Supplier();
-    supplier.SupplierID = this.idSupplierCtl?.value;
+    supplier.SupplierID = this.idSupplierCtl?.value === null ? 0 : this.idSupplierCtl?.value;
     supplier.Country=this.countryCtl?.value;
     supplier.ContactName=this.contactNameCtl?.value;
     supplier.CompanyName=this.companyNameCtl?.value;
@@ -91,16 +98,7 @@ export class FormComponent implements OnInit {
 
     return supplier;
   }
-  cleanForm():void{
-    this.form.setValue({
-      supplierId: 0,
-      companyName: "",
-      contactName: "",
-      address: "",
-      city: "",
-      country: ""
-    });
-  }
+
   refreshList():void{
     this.formCommunication.refreshList(true);
   }
